@@ -1,89 +1,116 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vera Lynn DeGraw | Cyberpunk Developer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="container nav-container">
+            <a href="#" class="logo">VERA LYNN DEGRAW<span class="blink">_</span></a>
+            <ul class="nav-links">
+                <li><a href="#about">[ ABOUT ]</a></li>
+                <li><a href="#projects">[ PROJECTS ]</a></li>
+                <li><a href="#contact">[ CONTACT ]</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/13.1.0/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/13.1.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/13.1.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/13.1.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/13.1.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/13.1.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/13.1.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/13.1.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/13.1.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/13.1.0/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+    <main>
+        <section class="hero">
+            <div class="container hero-content">
+                <p class="hero-subtitle">// SYSTEM.INIT(HELLO)</p>
+                <h1 class="hero-title">VERA LYNN DEGRAW</h1>
+                <h2 class="hero-role">Local-First Developer & Digital Architect</h2>
+                <p class="hero-desc">I build accessible, privacy-respecting, and thoughtfully crafted software. Useful technology doesn't need unnecessary complexity. Ideas deserve a chance to grow in the dark.</p>
+                <a href="#projects" class="btn btn-primary">EXECUTE: VIEW_WORK</a>
+            </div>
+        </section>
 
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
-    </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
+        <section id="about" class="section about">
+            <div class="container about-grid">
+                <div class="about-image">
+                    <div class="placeholder-img">🕸️</div> 
+                </div>
+                <div class="about-text">
+                    <h2 class="section-title">01. ABOUT_ME</h2>
+                    <p>I am a remote developer focused on turning simple, human-centered ideas into functional, independent software. My work emphasizes deliberate design, core web technologies, and honest boundaries around user privacy.</p>
+                    <p>Whether refining a reusable website template or building a local-first milestone tracker, my goal is to create tools that are small by design, local-first, and easy to understand.</p>
+                    <div class="skills">
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Git & GitHub</span>
+                        <span class="skill-tag">Firebase</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        <section id="projects" class="section projects">
+            <div class="container">
+                <h2 class="section-title text-center">02. FEATURED_PROJECTS</h2>
+                <div class="projects-grid">
+                    <article class="card">
+                        <div class="card-image sprout-bg"></div>
+                        <div class="card-content">
+                            <h3>SPROUT</h3>
+                            <p>A local-first milestone tracker that turns progress into a growing pixel-art tree. No accounts, no telemetry—just your data, stored safely in your browser's localStorage.</p>
+                            <div class="card-links">
+                                <a href="https://github.com/VeraLynnDeGraw/SPROUT" class="btn btn-outline" target="_blank" rel="noopener">[ VIEW_CODE ]</a>
+                            </div>
+                        </div>
+                    </article>
 
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
-  </body>
+                    <article class="card">
+                        <div class="card-image portfolio-bg"></div>
+                        <div class="card-content">
+                            <h3>WEBSITE PORTFOLIO</h3>
+                            <p>A professional, accessible portfolio built with core web technologies. Documents the evolution from a reusable template into a customized, independently maintained web presence.</p>
+                            <div class="card-links">
+                                <a href="https://github.com/VeraLynnDeGraw/Website-Portfolio" class="btn btn-outline" target="_blank" rel="noopener">[ VIEW_CODE ]</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-image template-bg"></div>
+                        <div class="card-content">
+                            <h3>WEBSITE TEMPLATE</h3>
+                            <p>A minimal, customizable static website starter template designed for easy GitHub Pages deployment. A solid foundation for personal or project sites.</p>
+                            <div class="card-links">
+                                <a href="https://github.com/VeraLynnDeGraw/Website-Template" class="btn btn-outline" target="_blank" rel="noopener">[ VIEW_CODE ]</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section contact">
+            <div class="container contact-content">
+                <h2 class="section-title">03. ESTABLISH_CONNECTION</h2>
+                <p>Interested in collaborating, or just want to talk about local-first software and responsible technology? My inbox is always open.</p>
+                <a href="mailto:veralynndegraw10011@proton.me" class="btn btn-primary">TRANSMIT: HELLO</a>
+                <div style="margin-top: 1.5rem;">
+                    <a href="https://github.com/VeraLynnDeGraw" class="github-link" target="_blank" rel="noopener">> ACCESS_GITHUB_REPOSITORY</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Vera Lynn DeGraw. Built with HTML, CSS & dark matter.</p>
+            <div class="social-links">
+                <a href="https://github.com/VeraLynnDeGraw" target="_blank" rel="noopener">[ GITHUB ]</a>
+            </div>
+        </div>
+    </footer>
+</body>
 </html>
