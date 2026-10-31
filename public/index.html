@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vera Lynn DeGraw | Signal V — Cyberpunk Developer</title>
+    <title>Vera Lynn DeGraw | Signal V — Independent Developer</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -93,45 +93,63 @@
     </footer>
 
     <script>
-        // Automatically fetch and display public repositories
+        // Automatically fetch and display pinned repositories
         document.addEventListener('DOMContentLoaded', () => {
             const projectsGrid = document.querySelector('.projects-grid');
             if (!projectsGrid) return;
 
-            // Fetch public repos (GitHub API naturally hides private repos from unauthenticated requests)
-            fetch('https://api.github.com/users/VeraLynnDeGraw/repos?sort=updated&direction=desc&per_page=6')
-                .then(response => {
-                    if (!response.ok) throw new Error('API limit or network error');
-                    return response.json();
-                })
-                .then(data => {
-                    // Filter out forks to only showcase your original work
-                    const myRepos = data.filter(repo => !repo.fork);
-                    
-                    // Clear the loading message
-                    projectsGrid.innerHTML = ''; 
-                    
-                    myRepos.forEach(repo => {
-                        const card = document.createElement('article');
-                        card.className = 'card';
-                        card.innerHTML = `
-                            <div class="card-image" style="background: linear-gradient(135deg, #1a0b2e 0%, #2d0a31 100%);"></div>
-                            <div class="card-content">
-                                <h3>${repo.name}</h3>
-                                <p>${repo.description || 'An independent, local-first software project exploring new architectures.'}</p>
-                                <div class="card-links">
-                                    <a href="${repo.html_url}" class="btn btn-outline" target="_blank" rel="noopener">[ VIEW_CODE ]</a>
-                                    ${repo.homepage ? `<a href="${repo.homepage}" class="btn btn-outline" target="_blank" rel="noopener">[ LIVE_DEMO ]</a>` : ''}
-                                </div>
-                            </div>
-                        `;
-                        projectsGrid.appendChild(card);
-                    });
-                })
-                .catch(err => {
-                    console.error('Failed to load repos:', err);
+            // Your pinned repositories (update this list whenever you change your GitHub pins)
+            const pinnedRepos = [
+                'ORIGO',
+                'SPROUT',
+                'Website-Portfolio',
+                'Website-Portfolio-Evolution',
+                'Website-Template',
+                'hello-python'
+            ];
+
+            // Fetch each pinned repo individually
+            Promise.all(pinnedRepos.map(repoName => 
+                fetch(`https://api.github.com/repos/VeraLynnDeGraw/${repoName}`)
+                    .then(response => {
+                        if (!response.ok) return null; // Skip if repo is private or doesn't exist
+                        return response.json();
+                    })
+                    .catch(() => null)
+            ))
+            .then(repos => {
+                // Filter out nulls (private/deleted repos)
+                const validRepos = repos.filter(repo => repo !== null);
+                
+                // Clear the loading message
+                projectsGrid.innerHTML = ''; 
+                
+                if (validRepos.length === 0) {
                     projectsGrid.innerHTML = '<p style="color: var(--color-text-muted); grid-column: 1/-1; text-align: center;">// SYSTEM OFFLINE: Check GitHub directly for latest projects.</p>';
+                    return;
+                }
+                
+                validRepos.forEach(repo => {
+                    const card = document.createElement('article');
+                    card.className = 'card';
+                    card.innerHTML = `
+                        <div class="card-image" style="background: linear-gradient(135deg, #1a0b2e 0%, #2d0a31 100%);"></div>
+                        <div class="card-content">
+                            <h3>${repo.name}</h3>
+                            <p>${repo.description || 'An independent, local-first software project exploring new architectures.'}</p>
+                            <div class="card-links">
+                                <a href="${repo.html_url}" class="btn btn-outline" target="_blank" rel="noopener">[ VIEW_CODE ]</a>
+                                ${repo.homepage ? `<a href="${repo.homepage}" class="btn btn-outline" target="_blank" rel="noopener">[ LIVE_DEMO ]</a>` : ''}
+                            </div>
+                        </div>
+                    `;
+                    projectsGrid.appendChild(card);
                 });
+            })
+            .catch(err => {
+                console.error('Failed to load repos:', err);
+                projectsGrid.innerHTML = '<p style="color: var(--color-text-muted); grid-column: 1/-1; text-align: center;">// SYSTEM OFFLINE: Check GitHub directly for latest projects.</p>';
+            });
         });
     </script>
 </body>
