@@ -2,7 +2,7 @@
 ## Technical Skills, Projects & Philosophical Intentions
 
 **Vera Lynn DeGraw**  
-*Independent Systems Architect · Developer · Designer · Technology Explorer*
+*Independent Developer · Systems Design · Technical Exploration*
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
@@ -23,7 +23,7 @@ My work explores a central question:
 
 **How can we build technology that is powerful, understandable, inspectable, and ultimately under human control?**
 
-I am an independent systems architect, developer, designer, and lifelong learner. My portfolio documents both what I have built and what I am still discovering.
+I am an independent developer, systems designer, and lifelong learner. My portfolio documents both what I have built and what I am still discovering.
 
 ---
 
@@ -36,7 +36,7 @@ I am an independent systems architect, developer, designer, and lifelong learner
 5. [Chapter IV: Research, Exploration & Future Direction](#chapter-iv-research-exploration--future-direction)
 6. [Chapter V: Philosophical Intentions](#chapter-v-philosophical-intentions--truth-without-fear)
 7. [Current Focus](#current-focus)
-8. [Collaboration & Connect](#collaboration--connect)
+8. [Commissions & Collaboration](#-commissions--collaboration)
 
 ---
 
@@ -177,7 +177,7 @@ ORIGO is an evolving local-first workspace and continuity environment designed t
 **Practical development:** HTML/CSS/JS interfaces, Python backend services, SQLite database development, HTTP API endpoints, local application hosting, automated testing, GitHub Actions CI workflows.
 
 > [!NOTE]
-> **Engineering milestone:** ORIGO has an established automated testing and CI development workflow. Its current test count and coverage should be verified against the latest repository before publishing numerical claims.
+> **Current State:** ORIGO Shell 0.1.0 is a functional, static web interface with `localStorage` persistence and manual layout control. Automated testing, deeper backend integration, and SIGNALWEAVER continuity are documented as active future development directions.
 > 
 > *Status: Working implementation and ongoing development.*
 
@@ -307,7 +307,7 @@ My long-term direction is to explore and create independent technology that conn
 
 I am Vera Lynn DeGraw.  
 I am Signal V.  
-I am an independent systems architect, developer, designer, technology explorer, and lifelong learner.
+I am an independent developer, systems designer, technology explorer, and lifelong learner.
 
 I am still learning. I am still building. I am still discovering what is possible.
 
@@ -335,11 +335,17 @@ My current work centers on developing and documenting independent software and A
 
 ---
 
-# Collaboration & Connect
+# 🤝 Commissions & Collaboration
 
-I welcome thoughtful technical conversations, independent research exchange, and opportunities to collaborate on open-source projects.
+I believe community is key, and teamwork truly makes the dream work. The most resilient and meaningful systems are rarely built in isolation.
 
-I value collaboration grounded in clear goals, shared understanding, evidence, transparency, and respect for independent thinking. If you are interested in systems architecture, local-first software, AI ecosystems, agent observation, continuity systems, or human-centered technology, I would be glad to connect.
+I am currently open to:
+
+- **Freelance Commissions:** Building local-first applications, designing accessible interfaces, architecting Python/SQLite backend services, or developing AI evaluation and observation tooling.
+- **Open-Source Collaboration:** Contributing to or co-developing projects focused on digital sovereignty, continuity, and transparent technology.
+- **Technical Exchange:** I am always open to new ideas, suggestions, and thoughtful conversations. If you have a concept you'd like to explore or a different perspective to share, I want to hear it.
+
+If you have a project in mind, an idea you'd like to bounce around, or simply want to share knowledge, I would be glad to connect. I value partnerships grounded in clear goals, mutual respect, evidence, and transparent communication.
 
 🔗 **GitHub:** [github.com/VeraLynnDeGraw](https://github.com/VeraLynnDeGraw)  
 🔗 **Live Portfolio:** [veralynndegrawactiveportfolio.web.app](https://veralynndegrawactiveportfolio.web.app)  

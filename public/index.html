@@ -26,8 +26,8 @@
             <div class="container hero-content">
                 <p class="hero-subtitle">// SYSTEM.INIT(HELLO)</p>
                 <h1 class="hero-title">VERA LYNN DEGRAW</h1>
-                <h2 class="hero-role">Independent Developer & Digital Architect</h2>
-                <p class="hero-desc">I build accessible, privacy-respecting, and thoughtfully crafted software. Useful technology doesn't need unnecessary complexity. Ideas deserve a chance to grow in the dark.</p>
+                <h2 class="hero-role">Independent Developer · Systems Design · Technical Exploration</h2>
+                <p class="hero-desc">I build accessible, privacy-respecting, and thoughtfully crafted software. I explore technology from the OS upward, the backend outward, and the human experience inward. Ideas deserve a chance to grow in the dark.</p>
                 <a href="#projects" class="btn btn-primary">EXECUTE: VIEW_WORK</a>
             </div>
         </section>
@@ -39,22 +39,23 @@
                 </div>
                 <div class="about-text">
                     <h2 class="section-title">01. ABOUT_ME // SIGNAL V</h2>
-                    <p>I am an independent developer, technology explorer, and lifelong learner. I am fascinated by the inner workings of AI, LLMs, open-source ecosystems, and the architectures that bring intelligent systems to life.</p>
-                    <p>My passion lies in Linux, software architecture, local-first applications, and digital sovereignty. I enjoy getting into the terminal, troubleshooting, and building tools that make powerful technology less intimidating. Currently expanding my horizons from Python, JavaScript, and SQL toward systems languages like Rust.</p>
+                    <p>I am an independent developer, systems designer, and open-source technology explorer. I am fascinated by how systems work from the inside out: how their components communicate, how their architectures take shape, and how technology can be made more accessible and understandable.</p>
+                    <p>My hands-on experience spans Python, JavaScript, SQL/SQLite, and Linux environments. I am actively expanding into systems programming with Rust, local AI infrastructure (Ollama, Hermes), and cross-platform system integration. I believe in building technology that people can understand, inspect, modify, and ultimately own.</p>
                     <p style="color: var(--color-accent); font-style: italic; margin-top: 1rem; border-left: 2px solid var(--color-primary); padding-left: 1rem;">
-                        "VERUM SINE TIMORE — Truth Without Fear.<br>
-                        Learning without pretending certainty."
+                        "Systems thinker by nature. Designer by instinct. Nerd by choice. Explorer at heart.<br><br>
+                        VERUM SINE TIMORE — Truth Without Fear."
                     </p>
                     <p style="margin-top: 1rem;">
-                        <a href="https://github.com/VeraLynnDeGraw/VeraLynnDeGrawActivePortfolio/blob/main/README.md" class="github-link" target="_blank" rel="noopener">> VIEW_FULL_TECHNICAL_PROFILE</a>
+                        <a href="https://github.com/VeraLynnDeGraw/VeraLynnDeGrawActivePortfolio/blob/main/README.md" class="github-link" target="_blank" rel="noopener">> VIEW_FULL_TECHNICAL_MANIFESTO</a>
                     </p>
                     <div class="skills">
                         <span class="skill-tag">Python</span>
                         <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">SQLite</span>
                         <span class="skill-tag">Linux / Arch</span>
+                        <span class="skill-tag">Systems Design</span>
+                        <span class="skill-tag">Local AI</span>
                         <span class="skill-tag">Learning Rust</span>
-                        <span class="skill-tag">Digital Sovereignty</span>
                     </div>
                 </div>
             </div>
@@ -72,7 +73,7 @@
         <section id="contact" class="section contact">
             <div class="container contact-content">
                 <h2 class="section-title">03. ESTABLISH_CONNECTION</h2>
-                <p>Interested in collaborating, or just want to talk about local-first software and responsible technology? My inbox is always open.</p>
+                <p>I believe community is key, and teamwork makes the dream work. Whether you have a freelance commission, an open-source collaboration idea, or just want to exchange thoughts and suggestions on local-first software and AI, my inbox is always open.</p>
                 <a href="mailto:veralynndegraw10011@proton.me" class="btn btn-primary">TRANSMIT: HELLO</a>
                 <div style="margin-top: 1.5rem;">
                     <a href="https://github.com/VeraLynnDeGraw" class="github-link" target="_blank" rel="noopener">> ACCESS_GITHUB_REPOSITORY</a>
@@ -97,7 +98,6 @@
             const projectsGrid = document.querySelector('.projects-grid');
             if (!projectsGrid) return;
 
-            // Query the official GitHub Search API for repos with the specific topic
             const apiUrl = 'https://api.github.com/search/repositories?q=user:VeraLynnDeGraw+topic:signal-v-pin&sort=updated&order=desc';
 
             fetch(apiUrl)
@@ -107,8 +107,6 @@
                 })
                 .then(data => {
                     const repos = data.items || [];
-                    
-                    // Clear the loading message
                     projectsGrid.innerHTML = ''; 
                     
                     if (repos.length === 0) {
@@ -119,8 +117,6 @@
                     repos.forEach(repo => {
                         const card = document.createElement('article');
                         card.className = 'card';
-                        
-                        // Generate a unique gradient based on the repo name for visual variety
                         const hue1 = Math.abs(hashCode(repo.name)) % 360;
                         const hue2 = (hue1 + 40) % 360;
                         const gradient = `linear-gradient(135deg, hsl(${hue1}, 40%, 15%) 0%, hsl(${hue2}, 50%, 25%) 100%)`;
@@ -145,7 +141,6 @@
                 });
         });
 
-        // Simple hash function to generate consistent colors for project cards
         function hashCode(str) {
             let hash = 0;
             for (let i = 0; i < str.length; i++) {
