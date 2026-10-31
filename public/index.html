@@ -64,7 +64,6 @@
             <div class="container">
                 <h2 class="section-title text-center">02. FEATURED_PROJECTS</h2>
                 <div class="projects-grid">
-                    <!-- Projects will be dynamically loaded by JavaScript below -->
                     <p style="color: var(--color-text-muted); grid-column: 1/-1; text-align: center;">// LOADING_REPOSITORIES...</p>
                 </div>
             </div>
@@ -93,64 +92,67 @@
     </footer>
 
     <script>
-        // Automatically fetch and display pinned repositories
+        // Dynamically fetch repositories tagged with the 'signal-v-pin' topic
         document.addEventListener('DOMContentLoaded', () => {
             const projectsGrid = document.querySelector('.projects-grid');
             if (!projectsGrid) return;
 
-            // Your pinned repositories (update this list whenever you change your GitHub pins)
-            const pinnedRepos = [
-                'ORIGO',
-                'SPROUT',
-                'Website-Portfolio',
-                'Website-Portfolio-Evolution',
-                'Website-Template',
-                'hello-python'
-            ];
+            // Query the official GitHub Search API for repos with the specific topic
+            const apiUrl = 'https://api.github.com/search/repositories?q=user:VeraLynnDeGraw+topic:signal-v-pin&sort=updated&order=desc';
 
-            // Fetch each pinned repo individually
-            Promise.all(pinnedRepos.map(repoName => 
-                fetch(`https://api.github.com/repos/VeraLynnDeGraw/${repoName}`)
-                    .then(response => {
-                        if (!response.ok) return null; // Skip if repo is private or doesn't exist
-                        return response.json();
-                    })
-                    .catch(() => null)
-            ))
-            .then(repos => {
-                // Filter out nulls (private/deleted repos)
-                const validRepos = repos.filter(repo => repo !== null);
-                
-                // Clear the loading message
-                projectsGrid.innerHTML = ''; 
-                
-                if (validRepos.length === 0) {
-                    projectsGrid.innerHTML = '<p style="color: var(--color-text-muted); grid-column: 1/-1; text-align: center;">// SYSTEM OFFLINE: Check GitHub directly for latest projects.</p>';
-                    return;
-                }
-                
-                validRepos.forEach(repo => {
-                    const card = document.createElement('article');
-                    card.className = 'card';
-                    card.innerHTML = `
-                        <div class="card-image" style="background: linear-gradient(135deg, #1a0b2e 0%, #2d0a31 100%);"></div>
-                        <div class="card-content">
-                            <h3>${repo.name}</h3>
-                            <p>${repo.description || 'An independent, local-first software project exploring new architectures.'}</p>
-                            <div class="card-links">
-                                <a href="${repo.html_url}" class="btn btn-outline" target="_blank" rel="noopener">[ VIEW_CODE ]</a>
-                                ${repo.homepage ? `<a href="${repo.homepage}" class="btn btn-outline" target="_blank" rel="noopener">[ LIVE_DEMO ]</a>` : ''}
+            fetch(apiUrl)
+                .then(response => {
+                    if (!response.ok) throw new Error('API limit or network error');
+                    return response.json();
+                })
+                .then(data => {
+                    const repos = data.items || [];
+                    
+                    // Clear the loading message
+                    projectsGrid.innerHTML = ''; 
+                    
+                    if (repos.length === 0) {
+                        projectsGrid.innerHTML = '<p style="color: var(--color-text-muted); grid-column: 1/-1; text-align: center;">// NO_FEATURED_PROJECTS: Tag a repository with "signal-v-pin" on GitHub.</p>';
+                        return;
+                    }
+                    
+                    repos.forEach(repo => {
+                        const card = document.createElement('article');
+                        card.className = 'card';
+                        
+                        // Generate a unique gradient based on the repo name for visual variety
+                        const hue1 = Math.abs(hashCode(repo.name)) % 360;
+                        const hue2 = (hue1 + 40) % 360;
+                        const gradient = `linear-gradient(135deg, hsl(${hue1}, 40%, 15%) 0%, hsl(${hue2}, 50%, 25%) 100%)`;
+
+                        card.innerHTML = `
+                            <div class="card-image" style="background: ${gradient};"></div>
+                            <div class="card-content">
+                                <h3>${repo.name}</h3>
+                                <p>${repo.description || 'An independent, local-first software project exploring new architectures.'}</p>
+                                <div class="card-links">
+                                    <a href="${repo.html_url}" class="btn btn-outline" target="_blank" rel="noopener">[ VIEW_CODE ]</a>
+                                    ${repo.homepage ? `<a href="${repo.homepage}" class="btn btn-outline" target="_blank" rel="noopener">[ LIVE_DEMO ]</a>` : ''}
+                                </div>
                             </div>
-                        </div>
-                    `;
-                    projectsGrid.appendChild(card);
+                        `;
+                        projectsGrid.appendChild(card);
+                    });
+                })
+                .catch(err => {
+                    console.error('Failed to load repos:', err);
+                    projectsGrid.innerHTML = '<p style="color: var(--color-text-muted); grid-column: 1/-1; text-align: center;">// SYSTEM OFFLINE: Check GitHub directly for latest projects.</p>';
                 });
-            })
-            .catch(err => {
-                console.error('Failed to load repos:', err);
-                projectsGrid.innerHTML = '<p style="color: var(--color-text-muted); grid-column: 1/-1; text-align: center;">// SYSTEM OFFLINE: Check GitHub directly for latest projects.</p>';
-            });
         });
+
+        // Simple hash function to generate consistent colors for project cards
+        function hashCode(str) {
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) {
+                hash = str.charCodeAt(i) + ((hash << 5) - hash);
+            }
+            return hash;
+        }
     </script>
 </body>
 </html>
